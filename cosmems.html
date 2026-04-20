@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COSMEMS – ISARIC</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@300;400;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --red: #b0162b;
+      --red-light: #f9e8eb;
+      --teal: #2a7a7a;
+      --teal-light: #d6eeee;
+      --dark: #1c1c1c;
+      --body: #3a3a3a;
+      --muted: #666;
+      --border: #e4dfd9;
+      --bg: #ffffff;
+      --section-alt: #f7f5f2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--body);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    nav {
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 66px;
+    }
+
+    .logo {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #fff;
+      letter-spacing: .05em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      color: rgba(255, 255, 255, .88);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+    }
+
+    .hero {
+      background: linear-gradient(140deg, #0b5050 0%, #177070 55%, #2a8888 100%);
+      padding: 3.5rem 3rem 3rem;
+    }
+
+    .hero h1 {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 700;
+      font-size: clamp(1.65rem, 2.8vw, 2.25rem);
+      color: #fff;
+      max-width: 800px;
+      line-height: 1.22;
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, .8);
+      margin-top: .9rem;
+      max-width: 640px;
+      font-size: .95rem;
+    }
+
+    .wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    section {
+      padding: 3.5rem 0;
+    }
+
+    section+section {
+      border-top: 1px solid var(--border);
+    }
+
+    h2 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .85rem;
+    }
+
+    h3 {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .5rem;
+    }
+
+    p {
+      font-size: .955rem;
+      color: var(--body);
+      margin-bottom: .8rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .rule {
+      width: 40px;
+      height: 3px;
+      border-radius: 2px;
+      margin-bottom: 1.4rem;
+    }
+
+    .rule.red {
+      background: var(--red);
+    }
+
+    .rule.teal {
+      background: var(--teal);
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .22rem .7rem;
+      border-radius: 100px;
+      margin-bottom: .7rem;
+    }
+
+    .tag.green {
+      background: #e6f4ee;
+      color: #1e6640;
+    }
+
+    /* COS GRID */
+    .cos-intro {
+      max-width: 100%;
+      margin-bottom: 2.5rem;
+    }
+
+    .cos-intro p {
+      color: var(--muted);
+    }
+
+    .hex-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .cos-centre {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      background: var(--dark);
+      border-radius: 14px;
+      padding: 1.4rem 2rem;
+      margin-bottom: .5rem;
+    }
+
+    .cos-centre-label {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .cos-centre-meta {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .6);
+      margin-top: .15rem;
+    }
+
+    .cos-divider {
+      width: 1px;
+      height: 42px;
+      background: rgba(255, 255, 255, .2);
+      flex-shrink: 0;
+    }
+
+    .cos-card {
+      border-radius: 12px;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid transparent;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+      transition: transform .15s, box-shadow .15s;
+      cursor: default;
+    }
+
+    .cos-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+    }
+
+    .cos-card .num {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      opacity: .6;
+    }
+
+    .cos-card .label {
+      font-family: 'Source Serif 4', serif;
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .cos-1 {
+      background: #f7ecec;
+      border-color: #e8c5c5;
+      color: #5a1818;
+    }
+
+    .cos-2 {
+      background: #fef4e2;
+      border-color: #f0d898;
+      color: #5a3900;
+    }
+
+    .cos-3 {
+      background: #ede8f7;
+      border-color: #cbbfea;
+      color: #2e1f6e;
+    }
+
+    .cos-4 {
+      background: #e2f0ef;
+      border-color: #a8cece;
+      color: #0e4f4a;
+    }
+
+    .cos-5 {
+      background: #fde9d8;
+      border-color: #e8beaa;
+      color: #5a2205;
+    }
+
+    .cos-6 {
+      background: #e6ecf8;
+      border-color: #b8c6e8;
+      color: #172057;
+    }
+
+    .cos-7 {
+      background: #e8f5e9;
+      border-color: #a8d4a8;
+      color: #144a1e;
+    }
+
+    @media (max-width: 700px) {
+      .hex-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cos-centre {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .cos-divider {
+        width: 60px;
+        height: 1px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .hex-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* NEXT PHASES */
+    .phases-intro {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .phases-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+    }
+
+    @media (max-width: 660px) {
+      .phases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .phase-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .phase-card-head {
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .phase-card-head.teal {
+      background: var(--teal);
+    }
+
+    .phase-card-head.red {
+      background: var(--red);
+    }
+
+    .phase-card-head h3 {
+      color: #fff;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .phase-card-head .step {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .65);
+      margin-left: auto;
+    }
+
+    .phase-card-body {
+      padding: 1.4rem 1.5rem;
+    }
+
+    .phase-card-body p {
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    .participant-list {
+      list-style: none;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .participant-list li {
+      font-size: .9rem;
+      color: var(--body);
+      padding: .55rem .9rem;
+      background: var(--section-alt);
+      border-radius: 7px;
+      border-left: 3px solid var(--red);
+      line-height: 1.4;
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--red);
+      border-radius: 14px;
+      padding: 2.2rem 2.5rem;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .cta h2 {
+      color: #fff;
+      font-size: 1.25rem;
+      margin-bottom: .5rem;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, .8);
+      font-size: .92rem;
+      margin-bottom: .5rem;
+    }
+
+    .cta small {
+      display: block;
+      color: rgba(255, 255, 255, .6);
+      font-size: .82rem;
+      margin-top: .4rem;
+    }
+
+    .cta small a {
+      color: rgba(255, 255, 255, .8);
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--section-alt);
+      border: none;
+      padding: .9rem 1.1rem;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      font-weight: 500;
+      color: var(--red);
+      text-align: left;
+    }
+
+    .faq-btn:hover {
+      background: #f0edea;
+    }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      transition: transform .22s;
+      color: var(--muted);
+    }
+
+    .faq-btn[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-body {
+      padding: 1rem 1.1rem;
+      border-top: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .faq-body p {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .faq-ul {
+      list-style: disc;
+      padding-left: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+
+    .faq-ul li {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .learn-more-wrap {
+      margin-top: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    .learn-more-btn {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      background: none;
+      border: 1.5px solid var(--teal);
+      color: var(--teal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      font-weight: 600;
+      padding: .6rem 1.2rem;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .learn-more-btn:hover {
+      background: var(--teal-light);
+    }
+
+    .learn-more-btn .chevron {
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+
+    .learn-more-btn[aria-expanded="true"] .chevron {
+      transform: rotate(180deg);
+    }
+
+    .learn-more-body {
+      margin-top: 1.8rem;
+    }
+
+    /* What is an outcome */
+    .outcome-box {
+      background: var(--section-alt);
+      border-radius: 10px;
+      border-left: 3px solid var(--teal);
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .outcome-box h3 {
+      color: var(--teal);
+      margin-bottom: .5rem;
+    }
+
+    .outcome-box p {
+      font-size: .93rem;
+      color: var(--muted);
+    }
+
+    /* Who can take part */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0 2.2rem;
+    }
+
+    @media (max-width: 640px) {
+      .who-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .who-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.3rem;
+      border-top: 3px solid var(--red);
+    }
+
+    .who-card h3 {
+      font-size: .97rem;
+      color: var(--red);
+      margin-bottom: .4rem;
+    }
+
+    .who-card p {
+      font-size: .87rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Study steps */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 0 1rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step-item:last-child {
+      border-bottom: none;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: .15rem;
+    }
+
+    .step-content h3 {
+      font-size: .97rem;
+      margin-bottom: .25rem;
+    }
+
+    .step-content p {
+      font-size: .88rem;
+      color: var(--muted);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="logo">ISARIC</span>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Research</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">Increasing Capacity</a></li>
+      <li><a href="#">News &amp; Events</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>COSMEMS — Core Outcome Set for Research in Brain Infection Sequelae</h1>
+      <p>A Delphi consensus project initiated by the World Health Organization in collaboration with ISARIC.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- INTRO -->
+    <section id="intro">
+      <p><strong>This project has been initiated by the World Health Organization in collaboration with ISARIC.</strong>
+      </p>
+      <p>The aim of this research is to decide what long term effects (sequelae) of acute brain infection called
+        'outcomes' are the most important to include in research of meningitis, encephalitis, and meningoencephalitis
+        and how to measure them.</p>
+    </section>
+
+    <!-- ADULT COS -->
+    <section id="adult-cos">
+      <span class="tag green">Project update</span>
+      <h2>Adult COSMEMS — Core Outcome Set Agreed</h2>
+      <div class="rule red"></div>
+      <div class="cos-intro">
+        <p>Following a rigorous Delphi consensus process involving patients, caregivers, clinicians, and researchers
+          from around the world, seven core outcomes have been agreed for inclusion in all future research on adult
+          brain infection sequelae — meningitis, encephalitis, and meningoencephalitis.</p>
+        <p>These outcomes should be measured and reported in all observational studies and clinical trials of adult
+          brain infection sequelae, enabling findings to be meaningfully compared across research programmes worldwide.
+        </p>
+      </div>
+      <div class="cos-centre">
+        <div>
+          <div class="cos-centre-label">7 Core Outcomes</div>
+          <div class="cos-centre-meta">Adult COSMEMS &nbsp;·&nbsp; Agreed by international consensus</div>
+        </div>
+        <div class="cos-divider"></div>
+        <div style="color:rgba(255,255,255,.75); font-size:.85rem; max-width:340px; line-height:1.5;">Each outcome
+          domain below must be included in research measuring the sequelae of adult brain infection.</div>
+      </div>
+      <div class="hex-grid">
+        <div class="cos-card cos-1">
+          <div class="num">01</div>
+          <div class="label">Cognitive functioning, symptoms, and conditions</div>
+        </div>
+        <div class="cos-card cos-2">
+          <div class="num">02</div>
+          <div class="label">Communication functioning, symptoms, and conditions</div>
+        </div>
+        <div class="cos-card cos-3">
+          <div class="num">03</div>
+          <div class="label">Survival and mortality</div>
+        </div>
+        <div class="cos-card cos-4">
+          <div class="num">04</div>
+          <div class="label">Daily physical functioning and independence</div>
+        </div>
+        <div class="cos-card cos-5">
+          <div class="num">05</div>
+          <div class="label">Mental and emotional functioning, symptoms, and conditions</div>
+        </div>
+        <div class="cos-card cos-6">
+          <div class="num">06</div>
+          <div class="label">Motor and balance functioning, symptoms, and conditions</div>
+        </div>
+        <div class="cos-card cos-7" style="grid-column: span 2;">
+          <div class="num">07</div>
+          <div class="label">Work, occupational changes, and study</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEXT PHASES -->
+    <section id="next-phases">
+      <h2>Next phases</h2>
+      <div class="rule teal"></div>
+      <div class="phases-intro">
+        <p>With the Adult Core Outcome Set now agreed, the COSMEMS project is moving forward on two important fronts:
+          identifying the measurement instruments for the adult COS, and extending the work to agree upon the outcomes
+          for children and young people.</p>
+      </div>
+      <div class="phases-grid">
+        <div class="phase-card">
+          <div class="phase-card-head teal">
+            <h3>Adult COSMEMS — Outcome Measurement</h3>
+          </div>
+          <div class="phase-card-body">
+            <p>The next step for Adult COSMEMS is to reach consensus on the instruments for measuring each of the seven
+              agreed core outcomes. This will ensure that future research uses standardised, comparable methods — making
+              it possible to combine and compare findings across studies worldwide.</p>
+            <p style="margin-top:.7rem;">We are inviting people with lived experience, caregivers, clinicians, and
+              researchers to participate in this next stage.</p>
+          </div>
+        </div>
+        <div class="phase-card">
+          <div class="phase-card-head red">
+            <h3>Launching Pediatric COSMEMS</h3><span class="step">New</span>
+          </div>
+          <div class="phase-card-body">
+            <p>We are now developing a Core Outcome Set specifically for research on brain infection sequelae in
+              children and young people. The following groups are invited to take part:</p>
+            <ul class="participant-list">
+              <li>Young people aged <strong>16–17</strong> who have personally experienced sequelae of infectious
+                encephalitis, meningitis, or meningoencephalitis</li>
+              <li>Adults aged <strong>18 and over</strong> who experienced infectious encephalitis, meningitis, or
+                meningoencephalitis sequelae as a child</li>
+              <li><strong>Family members and caregivers</strong> of children aged 0–17 affected by infectious
+                encephalitis, meningitis, or meningoencephalitis sequelae</li>
+              <li><strong>Healthcare professionals</strong> who treat patients with meningitis, encephalitis, and
+                meningoencephalitis sequelae</li>
+              <li><strong>Researchers</strong> studying meningitis, encephalitis, and meningoencephalitis sequelae</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta">
+        <h2>Want to participate in this study?</h2>
+        <p>If you have any queries or concerns, please do contact the study team.</p>
+        <a href="https://qualtrics.kcl.ac.uk/jfe/form/SV_7ONDped2A88sJG6" class="btn"
+          style="display:inline-block; background:#fff; color:var(--red); font-weight:600; padding:.72rem 1.9rem; border-radius:100px; text-decoration:none; font-size:.92rem; margin-bottom:.8rem;">Sign
+          up to participate</a>
+        <small>Email us at <a href="mailto:COS@isaric.org">COS@isaric.org</a> or <a
+            href="mailto:anastasiia.demidova@kcl.ac.uk">anastasiia.demidova@kcl.ac.uk</a></small>
+      </div>
+
+      <!-- LEARN MORE -->
+      <div class="learn-more-wrap">
+        <button class="learn-more-btn" onclick="toggleLearnMore(this)" aria-expanded="false">
+          <span>Learn more about the project</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div class="learn-more-body" hidden>
+
+          <div class="outcome-box">
+            <h3>What is an outcome?</h3>
+            <p>An outcome is something that we look at to understand how a person is doing after an illness.</p>
+            <p>For example, after a brain infection, an outcome could be if someone has problems with hearing, learning,
+              movement, or behaviour. These outcomes help families, doctors, and researchers understand what support or
+              treatment might be needed.</p>
+          </div>
+
+          <h3 style="margin-bottom:.8rem;">Who can take part?</h3>
+          <div class="who-grid">
+            <div class="who-card">
+              <h3>People with lived experience</h3>
+              <p>People who have experienced brain infection sequelae (meningitis, encephalitis, meningoencephalitis)
+                and their family members.</p>
+            </div>
+            <div class="who-card">
+              <h3>Healthcare professionals</h3>
+              <p>Clinicians who treat patients with meningitis, encephalitis, and meningoencephalitis sequelae.</p>
+            </div>
+            <div class="who-card">
+              <h3>Researchers</h3>
+              <p>Researchers studying meningitis, encephalitis, and meningoencephalitis sequelae.</p>
+            </div>
+          </div>
+
+          <h3 style="margin-bottom:.4rem;">Main steps of the study</h3>
+          <p style="color:var(--muted); font-size:.9rem; margin-bottom:.8rem;">Before the survey, we will arrange an
+            online meeting where we will explain the purpose of the project, go over the list of potential outcomes that
+            we have developed, and answer any questions.</p>
+          <div class="steps-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h3>Survey 1</h3>
+                <p>The survey will be completed online. You will be asked to rate how important you think each outcome
+                  is. You can also suggest additional outcomes if you feel something is missing.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h3>Meeting after Survey 1</h3>
+                <p>We will hold an online meeting to share the overall results from Survey 1 and discuss them together.
+                  You will have a chance to suggest new outcomes, improve wording, or propose combining similar ones.
+                </p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h3>Survey 2</h3>
+                <p>You will rank the same list of outcomes as in Survey 1, plus any new ones suggested by participants.
+                  You will see your previous ranking and the group's ranking to help you decide.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h3>Consensus meeting</h3>
+                <p>After Survey 2, we will hold an online meeting to discuss the results and agree on the final list of
+                  core outcomes.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h3>Study results</h3>
+                <p>We will move on to the next phase of the project, which aims to select appropriate measurement
+                  instruments for each of the core outcomes. Participants from the first phase will be invited to take
+                  part.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQs -->
+          <h3 style="margin-top:2rem; margin-bottom:.8rem;">FAQs</h3>
+          <div class="faq-list">
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>What are the possible risks of taking part?</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <p>There are no anticipated risks associated with participating in this study. However, reflecting on
+                  personal experiences with meningitis, encephalitis, or meningoencephalitis may be emotionally
+                  challenging for some participants. You are free to skip any questions that make you uncomfortable.</p>
+                <p>This research will not involve any form of treatment or drug trial.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>What are the possible benefits of taking part?</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <p>There will be no direct benefit to you as a result of completing this research, but your
+                  participation will be valuable and is likely to help to improve the design of future research related
+                  to brain infection. This will ultimately benefit patients by ensuring that treatment studies focus on
+                  the most important outcomes.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>Data handling and confidentiality</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <p>Kings College London is the Sponsor of this research and is responsible for looking after your
+                  information.</p>
+                <p>We are committed to protecting your privacy and handling your data responsibly, in accordance with UK
+                  data protection laws, including the UK General Data Protection Regulation (UK GDPR) and the Data
+                  Protection Act 2018.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>What personal data will we collect?</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <p>We will collect:</p>
+                <ul class="faq-ul">
+                  <li>Your email address, to send you information about the study and links to the online surveys.</li>
+                  <li>Basic demographic information, including your age, age at diagnosis, gender, ethnicity, country of
+                    residence, and stakeholder group (e.g. patient, clinician, researcher).</li>
+                </ul>
+                <p style="margin-top:.7rem;">If you participate in the consensus meeting, we may also collect:</p>
+                <ul class="faq-ul">
+                  <li>Your name (if you choose to share it during the meeting introduction — you may use a pseudonym if
+                    preferred).</li>
+                  <li>A video and audio recording of the meeting, to ensure accurate documentation of the discussion.
+                    This will be made only with your verbal consent at the start of the meeting. If any participant does
+                    not agree to being recorded, the session will not be recorded, and detailed notes will be taken
+                    instead.</li>
+                </ul>
+                <p style="margin-top:.7rem;">AI-generated notes may also be used to support the transcription process.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>How will your data be stored?</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <p>All data will be stored securely on encrypted servers at King's College London. Access to
+                  identifiable data (e.g. email addresses, video recordings) will be restricted to authorised members of
+                  the study team. Survey responses will be anonymised and stored in a password-protected file for up to
+                  25 years, in line with King's College London's research data retention policy.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>How will we use and share your data?</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <ul class="faq-ul">
+                  <li>Your email address will be used only for sending you the survey and informing you about the study
+                    results. It will be stored separately from your survey responses.</li>
+                  <li>No person outside the research team will have access to your identifiable information.</li>
+                  <li>Once you submit the survey, your responses will be anonymised. The research team analysing the
+                    data will not be able to link your answers to you personally.</li>
+                  <li>Anonymised and summarised survey results will be used in presentations, publications, and reports
+                    aimed at the academic, public health, and patient communities.</li>
+                  <li>Survey results may also be shared with other Delphi participants in later rounds, but only in
+                    anonymised, aggregated form.</li>
+                </ul>
+                <p style="margin-top:.8rem;"><strong>International data sharing:</strong> Your identifiable data will
+                  not be shared outside the UK.</p>
+                <p style="margin-top:.6rem;"><strong>How long will your data be kept?</strong></p>
+                <ul class="faq-ul">
+                  <li>Email addresses and recordings will be deleted once the study is complete or earlier if you
+                    request withdrawal.</li>
+                  <li>Anonymised survey responses and transcripts will be stored securely for 25 years.</li>
+                </ul>
+                <p style="margin-top:.6rem;"><strong>What happens to the recordings and transcripts?</strong></p>
+                <ul class="faq-ul">
+                  <li>Recordings will be used to create accurate transcripts and meeting summaries.</li>
+                  <li>Transcripts will be pseudonymised and reviewed for accuracy.</li>
+                  <li>Once transcripts are finalised, the original recordings will be permanently deleted.</li>
+                </ul>
+                <p style="margin-top:.6rem;"><strong>Future use of data:</strong> An anonymised version of the final
+                  dataset may be archived for ethically approved future research. If this happens, it will only include
+                  non-identifiable data.</p>
+                <p style="margin-top:.6rem;">Further information on how King's processes research data can be found on
+                  the <a
+                    href="https://www.kcl.ac.uk/research/support/research-ethics/kings-college-london-statement-on-use-of-personal-data-in-research"
+                    style="color:var(--teal);">King's College London website</a>.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>What if I change my mind about taking part?</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <p>If you do decide to take part, but later change your mind, you may withdraw at any point by pressing
+                  the 'Exit' button or closing the browser. You do not need to give any reason for withdrawing.</p>
+                <p>The quality of the study depends on participants completing both Survey 1 and Survey 2. Therefore,
+                  please consider if you'll be willing to do both surveys before you decide to participate. This helps
+                  us to ensure that all participants are heard and contribute to the results equally.</p>
+                <p>You may withdraw the data you provided before the discussion meeting held between Round 1 and Round 2
+                  of the survey. After this point, withdrawal of the data will no longer be possible, as the anonymised
+                  results will have been presented to participants during the meeting and may have influenced their
+                  opinions and subsequent discussion.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>How is the project being funded?</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <p>This project is being funded by the World Health Organization.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" onclick="toggleFaq(this)" aria-expanded="false">
+                <span>What will happen to the results of the project?</span>
+                <svg class="faq-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="faq-body" hidden>
+                <p>The results of the project will be published in an open-access academic journal. We will report the
+                  overall findings of the study, including aggregated survey results and summarised demographic
+                  information of participants. Reports from the consensus meeting and related discussions will also be
+                  included in anonymised form.</p>
+                <p>You may indicate whether you would like your name to be acknowledged in the study reports. This is
+                  entirely your choice. In line with our usual practice, we aim to list all study participants as
+                  authors on the publication; however, this will not be linked to any specific responses you have
+                  provided. If you prefer not to be named, we will fully respect and support your decision.</p>
+                <p>If the anonymised dataset is made publicly available, we will include information on how to access it
+                  in the final publication. A copy of the published research will also be shared with participants who
+                  express interest.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <script>
+    function toggleFaq(btn) {
+      const body = btn.nextElementSibling;
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      body.hidden = expanded;
+    }
+    function toggleLearnMore(btn) {
+      const body = btn.nextElementSibling;
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      body.hidden = expanded;
+    }
+  </script>
+</body>
+</html>
