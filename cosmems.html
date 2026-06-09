@@ -586,6 +586,97 @@
       color: var(--muted);
       margin: 0;
     }
+
+    /* PIS SECTION */
+    .pis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.6rem;
+    }
+
+    @media (max-width: 720px) {
+      .pis-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pis-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pis-card-head {
+      padding: 1.1rem 1.4rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pis-card-head.teal { background: var(--teal); }
+    .pis-card-head.red  { background: var(--red);  }
+    .pis-card-head.dark { background: var(--dark); }
+
+    .pis-card-head .pis-audience {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      margin-bottom: .3rem;
+    }
+
+    .pis-card-head h3 {
+      color: #fff;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .pis-card-body {
+      padding: 1.2rem 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      background: var(--bg);
+    }
+
+    .pis-card-body p {
+      font-size: .88rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .pis-download {
+      margin-top: auto;
+      padding-top: .9rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--teal);
+      border: 1.5px solid var(--teal);
+      border-radius: 100px;
+      padding: .5rem 1rem;
+      width: fit-content;
+      transition: background .15s;
+    }
+
+    .pis-download:hover {
+      background: var(--teal-light);
+    }
+
+    .pis-download.red-link {
+      color: var(--red);
+      border-color: var(--red);
+    }
+
+    .pis-download.red-link:hover {
+      background: var(--red-light);
+    }
   </style>
 </head>
 <body>
@@ -1019,6 +1110,71 @@
         </div>
       </div>
 
+    </section>
+
+    <!-- PARTICIPANT INFORMATION SHEETS -->
+    <section id="pis">
+      <h2>Participant Information Sheets</h2>
+      <div class="rule red"></div>
+      <p style="color:var(--muted); max-width:680px;">Before taking part, please read the information sheet that applies to you. Each sheet explains the study purpose, what participation involves, your rights, and how your data will be handled.</p>
+
+      <div class="pis-grid">
+
+        <!-- Children -->
+        <div class="pis-card">
+          <div class="pis-card-head teal">
+            <div class="pis-audience">For young participants</div>
+            <h3>Children &amp; Young People</h3>
+          </div>
+          <div class="pis-card-body">
+            <p>Aged <strong>16–17</strong> who have personally experienced sequelae of meningitis, encephalitis, or meningoencephalitis.</p>
+            <p>Written in plain language — explains what to expect, your right to withdraw at any time, and how your answers stay private.</p>
+            <a class="pis-download" href="5 - PIS children_v.1.1.pdf" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Read / Download PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- Parents -->
+        <div class="pis-card">
+          <div class="pis-card-head red">
+            <div class="pis-audience">For parents &amp; guardians</div>
+            <h3>Parents &amp; Guardians</h3>
+          </div>
+          <div class="pis-card-body">
+            <p>For parents or guardians of children aged <strong>0–17</strong> affected by brain infection sequelae who are considering allowing their child to participate.</p>
+            <p>Covers parental consent, data protection, and how to withdraw your child at any stage.</p>
+            <a class="pis-download red-link" href="5 - PIS parents_v.1.1.pdf" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Read / Download PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- General / Carers & HCPs -->
+        <div class="pis-card">
+          <div class="pis-card-head dark">
+            <div class="pis-audience">For carers, clinicians &amp; researchers</div>
+            <h3>Healthcare Professionals, Researchers &amp; Adult Carers</h3>
+          </div>
+          <div class="pis-card-body">
+            <p>For adults aged <strong>18+</strong> who experienced brain infection sequelae as a child, family members and caregivers, healthcare professionals, and researchers.</p>
+            <p>Provides full study details, consent process, and data handling information under UK GDPR.</p>
+            <a class="pis-download" href="5 - PIS general_pediatric COS v.1.1.pdf" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Read / Download PDF
+            </a>
+          </div>
+        </div>
+
+      </div>
     </section>
 
   </div>
