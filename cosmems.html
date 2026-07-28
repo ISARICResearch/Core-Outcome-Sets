@@ -14,6 +14,8 @@
       --teal: #2a7a7a;
       --teal-light: #d6eeee;
       --dark: #1c1c1c;
+      --gold: #8a6d1f;
+      --gold-light: #f3ecd9;
       --body: #3a3a3a;
       --muted: #666;
       --border: #e4dfd9;
@@ -590,12 +592,18 @@
     /* PIS SECTION */
     .pis-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.2rem;
       margin-top: 1.6rem;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
+      .pis-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
       .pis-grid {
         grid-template-columns: 1fr;
       }
@@ -617,6 +625,7 @@
     .pis-card-head.teal { background: var(--teal); }
     .pis-card-head.red  { background: var(--red);  }
     .pis-card-head.dark { background: var(--dark); }
+    .pis-card-head.gold { background: var(--gold); }
 
     .pis-card-head .pis-audience {
       font-size: .68rem;
@@ -676,6 +685,15 @@
 
     .pis-download.red-link:hover {
       background: var(--red-light);
+    }
+
+    .pis-download.gold-link {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .pis-download.gold-link:hover {
+      background: var(--gold-light);
     }
   </style>
 </head>
@@ -1114,22 +1132,21 @@
 
     <!-- PARTICIPANT INFORMATION SHEETS -->
     <section id="pis">
-      <h2>Participant Information Sheets</h2>
+      <h2>Participant Information Sheet</h2>
       <div class="rule red"></div>
-      <p style="color:var(--muted); max-width:680px;">Before taking part, please read the information sheet that applies to you. Each sheet explains the study purpose, what participation involves, your rights, and how your data will be handled.</p>
+      <p style="color:var(--muted); max-width:680px;">Before taking part, please read the participant information sheet in your preferred language. It explains the study purpose, what participation involves, your rights, and how your data will be handled.</p>
 
       <div class="pis-grid">
 
-        <!-- Children -->
+        <!-- English -->
         <div class="pis-card">
           <div class="pis-card-head teal">
-            <div class="pis-audience">For young participants</div>
-            <h3>Children &amp; Young People</h3>
+            <div class="pis-audience">English</div>
+            <h3>PIS — English</h3>
           </div>
           <div class="pis-card-body">
-            <p>Aged <strong>16–17</strong> who have personally experienced sequelae of meningitis, encephalitis, or meningoencephalitis.</p>
-            <p>Written in plain language — explains what to expect, your right to withdraw at any time, and how your answers stay private.</p>
-            <a class="pis-download" href="COSMEMS/5%20-%20PIS%20children_v.1.1.pdf" target="_blank" rel="noopener noreferrer">
+            <p>General Pediatric COS participant information sheet, v1.2.</p>
+            <a class="pis-download" href="COSMEMS/PIS_general_pediatric_COS_v1_2_EN.pdf" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
                 <path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -1138,16 +1155,15 @@
           </div>
         </div>
 
-        <!-- Parents -->
+        <!-- French -->
         <div class="pis-card">
           <div class="pis-card-head red">
-            <div class="pis-audience">For parents &amp; guardians</div>
-            <h3>Parents &amp; Guardians</h3>
+            <div class="pis-audience">Français</div>
+            <h3>PIS — French</h3>
           </div>
           <div class="pis-card-body">
-            <p>For parents or guardians of children aged <strong>0–17</strong> affected by brain infection sequelae who are considering allowing their child to participate.</p>
-            <p>Covers parental consent, data protection, and how to withdraw your child at any stage.</p>
-            <a class="pis-download red-link" href="COSMEMS/5%20-%20PIS%20parents_v.1.1.pdf" target="_blank" rel="noopener noreferrer">
+            <p>Fiche d'information destinée aux participants, COS pédiatrique général, v1.2.</p>
+            <a class="pis-download red-link" href="COSMEMS/PIS_general_pediatric_COS_v1_2_FR.pdf" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
                 <path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -1156,16 +1172,32 @@
           </div>
         </div>
 
-        <!-- General / Carers & HCPs -->
+        <!-- Russian -->
         <div class="pis-card">
           <div class="pis-card-head dark">
-            <div class="pis-audience">For carers, clinicians &amp; researchers</div>
-            <h3>Healthcare Professionals, Researchers &amp; Adult Carers</h3>
+            <div class="pis-audience">Русский</div>
+            <h3>PIS — Russian</h3>
           </div>
           <div class="pis-card-body">
-            <p>For adults aged <strong>18+</strong> who experienced brain infection sequelae as a child, family members and caregivers, healthcare professionals, and researchers.</p>
-            <p>Provides full study details, consent process, and data handling information under UK GDPR.</p>
-            <a class="pis-download" href="COSMEMS/5%20-%20PIS%20general_pediatric%20COS%20v.1.1.pdf" target="_blank" rel="noopener noreferrer">
+            <p>Информационный листок участника исследования, общий педиатрический COS, версия 1.2.</p>
+            <a class="pis-download" href="COSMEMS/PIS_general_pediatric_COS_v1_2_RU.pdf" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Read / Download PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- Bengali -->
+        <div class="pis-card">
+          <div class="pis-card-head gold">
+            <div class="pis-audience">বাংলা</div>
+            <h3>PIS — Bengali</h3>
+          </div>
+          <div class="pis-card-body">
+            <p>সাধারণ শিশু বিষয়ক COS অংশগ্রহণকারীর তথ্য শিট, সংস্করণ ১.২।</p>
+            <a class="pis-download gold-link" href="COSMEMS/PIS_general_pediatric_COS_v1_2_BN.pdf" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
                 <path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
