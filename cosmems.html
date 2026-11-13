@@ -695,6 +695,114 @@
     .pis-download.gold-link:hover {
       background: var(--gold-light);
     }
+
+    /* TWO-PROJECT SIGN-UP */
+    .cta-choices {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      margin: 1.1rem auto .9rem;
+      max-width: 360px;
+      text-align: left;
+    }
+
+    .cta-choice {
+      display: block;
+      background: #fff;
+      border-radius: 12px;
+      padding: .75rem 1.1rem;
+      text-decoration: none;
+      transition: background .15s;
+    }
+
+    .cta-choice:hover { background: #fbf6f6; }
+
+    .cta-choice strong {
+      display: block;
+      font-size: .95rem;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    .cta-choice span {
+      display: block;
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.4;
+      margin-top: .15rem;
+    }
+
+    .cta-choice:focus-visible,
+    .card-signup:focus-visible,
+    .pis-download:focus-visible {
+      outline: 3px solid var(--dark);
+      outline-offset: 2px;
+    }
+
+    .cta .cta-note {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .85);
+      margin-bottom: .2rem;
+    }
+
+    .cta .cta-note a { color: #fff; }
+
+    .card-signup {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-weight: 600;
+      font-size: .9rem;
+      padding: .6rem 1.4rem;
+      border-radius: 100px;
+      text-decoration: none;
+      color: #fff;
+      background: var(--red);
+      transition: opacity .15s;
+    }
+
+    .card-signup.teal { background: var(--teal); }
+
+    .card-signup:hover { opacity: .88; }
+
+    .phase-card { display: flex; flex-direction: column; }
+    .phase-card-body { flex: 1; display: flex; flex-direction: column; }
+    .phase-card-body .card-signup { margin-top: auto; align-self: flex-start; }
+    .phase-card-body .participant-list { margin-bottom: 1.2rem; }
+
+    .participant-list.teal li { border-left-color: var(--teal); }
+
+    .participant-list .sequelae-list {
+      list-style: disc;
+      padding-left: 1.2rem;
+      margin-top: .45rem;
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+
+    .participant-list .sequelae-list li {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: .87rem;
+      color: var(--muted);
+    }
+
+    .stage-label {
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .8);
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+
+    @media (max-width: 600px) {
+      .hero { padding: 2.5rem 0 2.2rem; }
+      .wrap { padding: 0 1.3rem; }
+      .cta { padding: 1.8rem 1.3rem; }
+      .phase-card-head { flex-wrap: wrap; }
+      .stage-label { margin-left: 0; white-space: normal; }
+    }
   </style>
 </head>
 <body>
@@ -728,13 +836,21 @@
         </div>
 
         <!-- CTA -->
-        <div class="cta" style="flex:1 1 45%; min-width:280px; margin-top:0;">
+        <div class="cta" id="join" style="flex:1 1 45%; min-width:280px; margin-top:0;">
           <h2>Want to participate in this study?</h2>
-          <p>If you have any queries or concerns, please do contact the study team.</p>
-          <a href="https://qualtrics.kcl.ac.uk/jfe/form/SV_bkL9rq67v5yNUmG" class="btn" target="_blank" rel="noopener noreferrer"
-            style="display:inline-block; background:#fff; color:var(--red); font-weight:600; padding:.72rem 1.9rem; border-radius:100px; text-decoration:none; font-size:.92rem; margin-bottom:.8rem;">Sign
-            up to participate</a>
-          <small>Email us at <a href="mailto:COS@isaric.org">COS@isaric.org</a> or <a
+          <p>We are recruiting for two projects. Choose the one that fits you.</p>
+          <div class="cta-choices">
+            <a class="cta-choice" href="https://qualtrics.kcl.ac.uk/jfe/form/SV_bkL9rq67v5yNUmG" target="_blank" rel="noopener noreferrer">
+              <strong>Sign up for Pediatric COSMEMS</strong>
+              <span>Agreeing which outcomes matter for children and young people</span>
+            </a>
+            <a class="cta-choice adult" href="https://qualtrics.kcl.ac.uk/jfe/form/SV_6fD1V7DsyncazJA" target="_blank" rel="noopener noreferrer">
+              <strong>Sign up for Adult COSMEMS</strong>
+              <span>Choosing how to measure the 7 agreed adult outcomes</span>
+            </a>
+          </div>
+          <p class="cta-note">You can sign up for both. For the Pediatric project, please read the <a href="#pis">information sheet</a> first.</p>
+          <small>Questions? Email us at <a href="mailto:COS@isaric.org">COS@isaric.org</a> or <a
               href="mailto:anastasiia.demidova@kcl.ac.uk">anastasiia.demidova@kcl.ac.uk</a></small>
         </div>
       </div>
@@ -805,20 +921,39 @@
       </div>
       <div class="phases-grid">
         <div class="phase-card">
-          <div class="phase-card-head teal">
-            <h3>Adult COSMEMS — Outcome Measurement</h3>
+          <div class="phase-card-head teal" id="adult">
+            <h3>Adult COSMEMS — Outcome Measurement</h3><span class="stage-label">Now recruiting</span>
           </div>
           <div class="phase-card-body">
             <p>The next step for Adult COSMEMS is to reach consensus on the instruments for measuring each of the seven
               agreed core outcomes. This will ensure that future research uses standardised, comparable methods — making
               it possible to combine and compare findings across studies worldwide.</p>
-            <p style="margin-top:.7rem;">We are inviting people with lived experience, caregivers, clinicians, and
-              researchers to participate in this next stage.</p>
+            <p style="margin-top:.7rem;">The following groups are invited to take part in this stage:</p>
+            <ul class="participant-list teal">
+              <li>Adults aged <strong>18 and over</strong> who have personally experienced at least one of the following
+                sequelae after infectious encephalitis, meningitis, or meningoencephalitis, either now or in the past:
+                <ul class="sequelae-list">
+                  <li>Cognitive problems, such as with memory, attention, or thinking</li>
+                  <li>Communication problems, such as with speaking, understanding speech, reading, or writing</li>
+                  <li>Difficulties with daily physical functioning and independence</li>
+                  <li>Mental and emotional difficulties, such as anxiety, low mood, or changes in behaviour</li>
+                  <li>Motor and balance problems</li>
+                  <li>Changes to work, occupation, or study</li>
+                </ul>
+              </li>
+              <li><strong>Healthcare professionals</strong> with current or recent clinical experience of patients with
+                brain infection sequelae</li>
+              <li><strong>Researchers</strong> with current or recent research experience involving patients with brain
+                infection sequelae</li>
+            </ul>
+            <p>People with lived experience will only be asked about the effects they have experienced themselves.</p>
+            <p>If you took part in the Adult COSMEMS outcome consensus, you are very welcome to join this stage too.</p>
+            <a class="card-signup teal" href="https://qualtrics.kcl.ac.uk/jfe/form/SV_6fD1V7DsyncazJA" target="_blank" rel="noopener noreferrer">Sign up for Adult COSMEMS</a>
           </div>
         </div>
         <div class="phase-card">
-          <div class="phase-card-head red">
-            <h3>Launching Pediatric COSMEMS</h3><span class="step">New</span>
+          <div class="phase-card-head red" id="pediatric">
+            <h3>Launching Pediatric COSMEMS</h3><span class="stage-label">Now recruiting</span>
           </div>
           <div class="phase-card-body">
             <p>We are now developing a Core Outcome Set specifically for research on brain infection sequelae in
@@ -834,6 +969,7 @@
                 meningoencephalitis sequelae</li>
               <li><strong>Researchers</strong> studying meningitis, encephalitis, and meningoencephalitis sequelae</li>
             </ul>
+            <a class="card-signup" href="https://qualtrics.kcl.ac.uk/jfe/form/SV_bkL9rq67v5yNUmG" target="_blank" rel="noopener noreferrer">Sign up for Pediatric COSMEMS</a>
           </div>
         </div>
       </div>
@@ -858,6 +994,14 @@
               treatment might be needed.</p>
           </div>
 
+          <div class="outcome-box">
+            <h3>What is a measurement instrument?</h3>
+            <p>A measurement instrument is the tool used to measure an outcome — for example, a questionnaire, a test,
+              or a clinical rating scale.</p>
+            <p>If "memory" is an outcome, a short memory test or a questionnaire about everyday memory problems could be
+              the instrument. Agreeing on the same instruments means results from different studies can be compared.</p>
+          </div>
+
           <h3 style="margin-bottom:.8rem;">Who can take part?</h3>
           <div class="who-grid">
             <div class="who-card">
@@ -875,7 +1019,7 @@
             </div>
           </div>
 
-          <h3 style="margin-bottom:.4rem;">Main steps of the study</h3>
+          <h3 style="margin-bottom:.4rem;">Main steps of the Pediatric study</h3>
           <p style="color:var(--muted); font-size:.9rem; margin-bottom:.8rem;">Before the survey, we will arrange an
             online meeting where we will explain the purpose of the project, go over the list of potential outcomes that
             we have developed, and answer any questions.</p>
@@ -920,6 +1064,41 @@
                 <p>We will move on to the next phase of the project, which aims to select appropriate measurement
                   instruments for each of the core outcomes. Participants from the first phase will be invited to take
                   part.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top:2rem; margin-bottom:.4rem;">Main steps of the Adult instrument selection</h3>
+          <p style="color:var(--muted); font-size:.9rem; margin-bottom:.8rem;">Our team has reviewed more than 100
+            instruments used in earlier research and shortlisted those that are designed for adults, free to use,
+            available in several languages, and quick enough to complete. You will help us decide which of these
+            shortlisted instruments work best.</p>
+          <div class="steps-list">
+            <div class="step-item">
+              <div class="step-num" style="background:var(--teal);">1</div>
+              <div class="step-content">
+                <h3>Instrument review survey</h3>
+                <p>The survey will be completed online. For each shortlisted instrument, you will be asked whether its
+                  questions cover what matters most, whether they are clear and easy to understand, and whether the
+                  instrument captures the outcome overall. You can add comments to explain your answers. People with
+                  lived experience will only review instruments for the effects they have experienced themselves.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num" style="background:var(--teal);">2</div>
+              <div class="step-content">
+                <h3>Consensus workshop</h3>
+                <p>We will hold an online workshop, in English and led by a facilitator, to discuss the survey results
+                  together with practical points such as completion time and available translations. Participants will
+                  vote to confirm, exclude, or suggest changes to the shortlisted instruments for each outcome.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num" style="background:var(--teal);">3</div>
+              <div class="step-content">
+                <h3>Study results</h3>
+                <p>The agreed instruments will be published alongside the Adult Core Outcome Set, so future studies can
+                  measure the outcomes in the same way.</p>
               </div>
             </div>
           </div>
@@ -1077,7 +1256,7 @@
               <div class="faq-body" hidden>
                 <p>If you do decide to take part, but later change your mind, you may withdraw at any point by pressing
                   the 'Exit' button or closing the browser. You do not need to give any reason for withdrawing.</p>
-                <p>The quality of the study depends on participants completing both Survey 1 and Survey 2. Therefore,
+                <p>For the Pediatric project, the quality of the study depends on participants completing both Survey 1 and Survey 2. Therefore,
                   please consider if you'll be willing to do both surveys before you decide to participate. This helps
                   us to ensure that all participants are heard and contribute to the results equally.</p>
                 <p>You may withdraw the data you provided before the discussion meeting held between Round 1 and Round 2
@@ -1132,7 +1311,7 @@
 
     <!-- PARTICIPANT INFORMATION SHEETS -->
     <section id="pis">
-      <h2>Participant Information Sheet</h2>
+      <h2>Participant Information Sheet: Pediatric COSMEMS</h2>
       <div class="rule red"></div>
       <p style="color:var(--muted); max-width:680px;">Before taking part, please read the participant information sheet in your preferred language. It explains the study purpose, what participation involves, your rights, and how your data will be handled.</p>
 
